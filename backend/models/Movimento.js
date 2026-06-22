@@ -2,34 +2,42 @@ const {DataTypes} = require('sequelize')
 
 const db = require('../db/conn')
 
-const Movimento = db.define('Movimento',{
-    codMoviemnto: {
+const Movimento = db.define('movimento',{
+    codMovimento: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
-    },
-    idProduto: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Produtos',
-            key: 'codProduto'
-        }
+        autoIncrement: true,
     },
     idUsuario: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Usuarios',
+            model: 'usuarios',
             key: 'codUsuario'
         }
+    },
+    idProduto: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'produtos',
+            key: 'codProduto'
+        }
+    },
+    tipo: {
+        type: DataTypes.ENUM('ENTRADA','SAIDA'),
+        allowNull: false
+    },
+    qtdeMov: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
     data: {
         type: DataTypes.DATEONLY,
         allowNull: false
     }
 },{
-    timestamps: false,
+    timestamps: true,
     tableName: 'movimentos'
 })
 
