@@ -4,25 +4,25 @@ const Movimento = require('./Movimento')
 
 Usuario.hasMany(Movimento,{
     foreignKey: 'idUsuario',
-    as: 'MovimentoUsuario',
-    allowNull: false
+    as: 'movimentoUsuario',
+    onDelete: 'CASCADE'
 })
 
 Movimento.belongsTo(Usuario,{
-    foreignKey: 'idProduto',
-    as: 'UsuarioMovimento',
+    foreignKey: 'idUsuario',
+    as: 'usuarioMovimento',
     allowNull: false
 })
 
 Produto.hasMany(Movimento,{
-    foreignKey: 'idUsuario',
-    as: 'MovimentoProduto',
-    allowNull: false
+    foreignKey: 'idProduto',
+    as: 'movimentoProduto',
+    onDelete: 'CASCADE'
 })
 
 Movimento.belongsTo(Produto,{
     foreignKey: 'idProduto',
-    as: 'ProdutoMovimento',
+    as: 'produtoMovimento',
     allowNull: false
 })
 

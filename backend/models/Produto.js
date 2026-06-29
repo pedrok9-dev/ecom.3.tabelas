@@ -2,35 +2,23 @@ const {DataTypes} = require('sequelize')
 
 const db = require('../db/conn')
 
-const Produto = db.define('produto',{
+const Produto = db.define('Produto',{
     codProduto:{
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    nome: {
-        type: DataTypes.STRING(40),
+    marca: {
+        type: DataTypes.STRING(100),
         allowNull: false
     },
-    categoria: {
-        type: DataTypes.STRING(40),
-        allowNull: false
-    },
-    numero: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    quantidade: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-    precoUnit: {
-        type: DataTypes.DECIMAL(10,2), // moeda
+    preco: {
+        type: DataTypes.DECIMAL(10,2),
         allowNull: false
     }
 },{
-    timestamps: true,
-    tableName: 'produtos'
+    timestamps: false,
+    tableName: 'produto'
 })
 
 module.exports = Produto
